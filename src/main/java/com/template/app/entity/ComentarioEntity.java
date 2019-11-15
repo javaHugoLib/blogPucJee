@@ -50,7 +50,7 @@ public class ComentarioEntity implements IEntity<Long> {
 	private Date data;
 	
     @ManyToOne (targetEntity = PostagemEntity.class)  
-    @JoinColumn(name="POSTAGEM_ID", referencedColumnName="ID")
+    @JoinColumn(name="postagem_id", referencedColumnName="id")
     @XmlTransient
 	private PostagemEntity postagemEntity;
 	

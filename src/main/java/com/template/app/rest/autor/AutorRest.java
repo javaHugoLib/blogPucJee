@@ -4,16 +4,17 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
-import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.template.app.entity.AutorEntity;
+import com.template.app.entity.PostagemEntity;
 import com.template.app.exception.AppException;
 import com.template.app.rest.service.AutorService;
 
@@ -38,11 +39,20 @@ public class AutorRest {
 	
 	@GET
 	@Path("/{id}")
-	public AutorEntity get( @PathParam("id") Long entityId) throws AppException {
+	public AutorEntity get( @PathParam("id") long entityId) throws AppException {
 		LOGGER.info("AutorRest.get: id " + entityId);
 		AutorEntity autor =  autorService.get(entityId);
 		LOGGER.info("AutorRest.get: " + autor);
 		return autor;
+	}
+	
+	@GET
+	@Path("/{id}/postagens")
+	public List<PostagemEntity> PostagemAutor( @PathParam("id") Long entityId) throws AppException {
+		LOGGER.info("AutorRest.PostagemAutor: id " + entityId);
+		List<PostagemEntity> postagens =  autorService.getPostagemAutor(entityId);
+		LOGGER.info("AutorRest.PostagemAutor: " + postagens);
+		return postagens;
 	}
 	
 	@PUT

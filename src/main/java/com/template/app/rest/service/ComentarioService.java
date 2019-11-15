@@ -3,11 +3,13 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import com.template.app.entity.AutorEntity;
 import com.template.app.entity.ComentarioEntity;
 
 @Stateless
@@ -47,10 +49,12 @@ public class ComentarioService {
 		CriteriaBuilder cb = entityManater.getCriteriaBuilder();
 		CriteriaQuery<ComentarioEntity> q = cb.createQuery(ComentarioEntity.class);
 		Root<ComentarioEntity> o = q.from(ComentarioEntity.class);
-
 		q.where(cb.equal(o.get("id"), idComentario));
-
-		ComentarioEntity comentarioEntity = (ComentarioEntity)entityManater.createQuery(q).getSingleResult();
-		return comentarioEntity;
+		
+		try {
+			return (ComentarioEntity)entityManater.createQuery(q).getSingleResult();
+		} catch (NoResultException nre) {
+			return null;
+		}
 	}	
 }

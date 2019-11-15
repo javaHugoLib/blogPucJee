@@ -15,8 +15,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -50,7 +48,7 @@ public class PostagemEntity implements IEntity<Long> {
 	private String postagem;
 	
     @ManyToOne (targetEntity = AutorEntity.class)  
-    @JoinColumn(name="AUTOR_ID", referencedColumnName="ID")
+    @JoinColumn(name="autor_id", referencedColumnName="id")
     @XmlTransient
 	private AutorEntity autorEntity;
     
