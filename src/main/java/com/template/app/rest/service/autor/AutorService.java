@@ -40,6 +40,10 @@ public class AutorService {
 	public void delete(AutorEntity autorEntity) {
 		entityManater.remove(entityManater.contains(autorEntity) ? autorEntity : entityManater.merge(autorEntity));		
 	}	
+		
+	public void update(AutorEntity author) {
+		entityManater.merge(author);	
+	}
 	
 	private AutorEntity GetAutor(Long idAutor) {
 		
