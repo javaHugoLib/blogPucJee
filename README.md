@@ -6,7 +6,7 @@
 
 > **Git Projeto:** https://github.com/javaHugoLib/blogpucjee
 
-# Cenário:
+## Cenário:
 
  Implementar um backend para um serviço de um blog, em que haverá AUTOR e POSTAGEM.
 - O autor terá um CRUD de postagens.
@@ -26,6 +26,7 @@ To start application:
 ```sh
 mvn -Dmaven.test.skip=true wildfly:run
 ```
+# DOCUMENTAÇÃO
 ## Autor
 
 http://localhost:8080/blogpucjee/rest/autor/all
@@ -68,7 +69,7 @@ Retorno
 http://localhost:8080/blogpucjee/rest/autor/2
 
     curl -X GET \
-              http://localhost:8080/blogpucjee/rest/autor/1 \
+              http://localhost:8080/blogpucjee/rest/autor/2 \
  Retorno
 
          {
