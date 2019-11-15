@@ -1,4 +1,4 @@
-package com.template.app.rest.service.postagem;
+package com.template.app.rest.service;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
 import com.template.app.entity.PostagemEntity;
 
 @Stateless
@@ -37,6 +38,10 @@ public class PostagemService {
 	
 	public void delete(PostagemEntity postagemEntity) {
 		entityManater.remove(entityManater.contains(postagemEntity) ? postagemEntity : entityManater.merge(postagemEntity));				
+	}
+	
+	public void update(PostagemEntity postagem) {
+		entityManater.merge(postagem);	
 	}
 
 	private PostagemEntity GetPostagem(Long idPostagem) {		

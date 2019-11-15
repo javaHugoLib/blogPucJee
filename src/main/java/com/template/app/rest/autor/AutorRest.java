@@ -15,7 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.template.app.entity.AutorEntity;
 import com.template.app.exception.AppException;
-import com.template.app.rest.service.autor.AutorService;
+import com.template.app.rest.service.AutorService;
 
 @Path("/autor")
 @Produces({ MediaType.APPLICATION_JSON })
@@ -27,10 +27,10 @@ public class AutorRest {
 	private AutorService autorService;
 
 	@GET
-	@Path("/")
+	@Path("/all")
 	public List<AutorEntity> getAllAutor() throws AppException{
 		LOGGER.info("AutorRest.getAllAutor");
-		List<AutorEntity> listAutor = autorService.GetAllAutor();		
+		List<AutorEntity> listAutor = autorService.retrieveAll();		
 		LOGGER.info("AutorRest.getAllAutor: "+listAutor);
 		
 		return listAutor;
@@ -39,30 +39,30 @@ public class AutorRest {
 	@GET
 	@Path("/{id}")
 	public AutorEntity get( @PathParam("id") Long entityId) throws AppException {
-		LOGGER.info("AuthorRest.getAuthor: id " + entityId);
-		AutorEntity author =  autorService.get(entityId);
-		LOGGER.info("AuthorRest.getAuthor: " + author);
-		return author;
+		LOGGER.info("AutorRest.get: id " + entityId);
+		AutorEntity autor =  autorService.get(entityId);
+		LOGGER.info("AutorRest.get: " + autor);
+		return autor;
 	}
 	
 	@PUT
 	@Path("/")
 	public void update(AutorEntity entity) throws AppException {
-		LOGGER.info("AuthorRest.update: " + entity);
+		LOGGER.info("AutorRest.update: " + entity);
 		autorService.update(entity);
 	}
 	
 	@POST
 	@Path("/create")
 	public AutorEntity create(AutorEntity entity) throws AppException{
-		LOGGER.info("AuthorRest.create: " + entity);
+		LOGGER.info("AutorRest.create: " + entity);
 		return autorService.create(entity);
 	}
 	
 	@DELETE
-	@Path("/")
+	@Path("/delete")
 	public void delete(AutorEntity entity) throws AppException{
-		LOGGER.info("AuthorRest.delete: " + entity);
+		LOGGER.info("AutorRest.delete: " + entity);
 		autorService.delete(entity);
 	}
 }

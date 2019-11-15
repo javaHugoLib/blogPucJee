@@ -1,4 +1,4 @@
-package com.template.app.rest.service.autor;
+package com.template.app.rest.service;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -19,7 +19,7 @@ public class AutorService {
 	@PersistenceContext(unitName = "blog-persistence-unit")
 	private EntityManager entityManater;
 		
-	public List<AutorEntity> GetAllAutor() {			
+	public List<AutorEntity> retrieveAll() {			
 		logger.info("AutorEntity.retrieveAll");				
 		List<AutorEntity> listAutor = entityManater.createNamedQuery("AutorEntity.retrieveAll").getResultList();
 		return listAutor;				
@@ -41,8 +41,8 @@ public class AutorService {
 		entityManater.remove(entityManater.contains(autorEntity) ? autorEntity : entityManater.merge(autorEntity));		
 	}	
 		
-	public void update(AutorEntity author) {
-		entityManater.merge(author);	
+	public void update(AutorEntity autor) {
+		entityManater.merge(autor);	
 	}
 	
 	private AutorEntity GetAutor(Long idAutor) {

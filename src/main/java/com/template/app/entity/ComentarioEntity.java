@@ -27,7 +27,7 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 
 @NamedQueries({
-    @NamedQuery(name="ComentarioEntity.retrieveAll", query="Select distinct coment from ComentarioEntity coment order by c.data desc")
+    @NamedQuery(name="ComentarioEntity.retrieveAll", query="Select distinct coment from ComentarioEntity coment order by coment.data desc")
 }) 
 
 public class ComentarioEntity implements IEntity<Long> {

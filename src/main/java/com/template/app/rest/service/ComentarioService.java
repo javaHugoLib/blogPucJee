@@ -1,4 +1,4 @@
-package com.template.app.rest.service.comentario;
+package com.template.app.rest.service;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
 import com.template.app.entity.ComentarioEntity;
 
 @Stateless
@@ -33,11 +34,15 @@ public class ComentarioService {
 		entityManater.persist(comentarioEntity);
 		return comentarioEntity;				
 	}
-	
+			
 	public void delete(ComentarioEntity comentarioEntity) {
 		entityManater.remove(entityManater.contains(comentarioEntity) ? comentarioEntity : entityManater.merge(comentarioEntity));				
 	}
 
+	public void update(ComentarioEntity comentario) {
+		entityManater.merge(comentario);	
+	}
+	
 	private ComentarioEntity GetComentario(Long idComentario) {		
 		CriteriaBuilder cb = entityManater.getCriteriaBuilder();
 		CriteriaQuery<ComentarioEntity> q = cb.createQuery(ComentarioEntity.class);
