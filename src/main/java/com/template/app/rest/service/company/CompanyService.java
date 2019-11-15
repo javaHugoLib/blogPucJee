@@ -13,7 +13,7 @@ import com.template.app.entity.CompanyEntity;
 @Stateless
 public class CompanyService {
 	
-	@PersistenceContext(unitName = "company-persistence-unit")
+	@PersistenceContext(unitName = "blog-persistence-unit")
 	private EntityManager entityManater;
 
 	public List<CompanyEntity> GetAllCompanies() {
