@@ -1,9 +1,11 @@
 # Back-end - Trabalho Final JAVA
 
 > **Aluno:** Hugo Vinicius Reis Vaz
+
 > **E-mail:** hugo.desenvolvimento@outlook.com  
+
 > **Git Projeto:** https://github.com/javaHugoLib/blogpucjee
-> 
+
 # Cenário:
 
  Implementar um backend para um serviço de um blog, em que haverá AUTOR e POSTAGEM.
